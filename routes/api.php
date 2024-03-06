@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Apicontroller;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::post('/register',[Apicontroller::class,'register']);
+Route::post('/login',[Apicontroller::class,'login']);
+Route::get('/detail',[Apicontroller::class,'detail'])
+->middleware('auth:sanctum');
+Route::post('/register',[Apicontroller::class,'register']);
+
+// Route::get('/student',function(){
+//  return 'i am a developer laravel';
+// });
+
+// Route::apiResource('/student',ApiController::class);{
+//     return 'i am a developer laravel';
+//    };
+
+Route::post('/student','Apicontroller@create');
